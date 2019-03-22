@@ -5,20 +5,20 @@
   
   <title>ss | 李向的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="重温JS(1)-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实">
+  <meta name="description" content="重温JS-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ss">
 <meta property="og:url" content="http://yoursite.com/2018/02/22/重温JS(1)-类型/index.html">
 <meta property="og:site_name" content="李向的笔记">
-<meta property="og:description" content="重温JS(1)-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实">
+<meta property="og:description" content="重温JS-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/02/22/重温JS(1)-类型/assets/9GjmEq-1553222822386.png">
 <meta property="og:image" content="http://yoursite.com/2018/02/22/重温JS(1)-类型/assets/9GjdPK-1553222822515.png">
-<meta property="og:updated_time" content="2019-03-22T03:35:27.118Z">
+<meta property="og:updated_time" content="2019-03-22T08:20:28.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ss">
-<meta name="twitter:description" content="重温JS(1)-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实">
+<meta name="twitter:description" content="重温JS-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是">
 <meta name="twitter:image" content="http://yoursite.com/2018/02/22/重温JS(1)-类型/assets/9GjmEq-1553222822386.png">
   
     <link rel="alternate" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="重温JS-1-类型"><a href="#重温JS-1-类型" class="headerlink" title="重温JS(1)-类型"></a>重温JS(1)-类型</h1><h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>七种数据数据类型，本篇博客主要讲数组和对象。</p>
+        <h1 id="重温JS-类型"><a href="#重温JS-类型" class="headerlink" title="重温JS-类型"></a>重温JS-类型</h1><h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>七种数据数据类型，本篇博客主要讲数组和对象。</p>
 <p>这篇博客不区分es6与js的差异。以es6为准。</p>
 <p>js中变量没有类型而值有类型：基本数据类型值和引用类型值。<em>基本类型</em>就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。</p>
 <p><em>引用类型</em>的值是保存在内存中的对象。在操作对象时，实际上是在操作对象的引用而不是实际的对象。为此，引用类型的值是按引用访问的。有如下几种：Object·Array·Date·Regexp·Function·Boolean·Number·String。后面三种是为了便于操作基本类型值而提供的。</p>
@@ -431,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/22/重温JS(1)-类型/" data-id="cjtjs8kbj0009fguntt7wnd6z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/02/22/重温JS(1)-类型/" data-id="cjtjsyyux000jq8un7xxrgv69" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -442,11 +442,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/22/this指向和闭包/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/02/22/原型与原型链/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          this指向与闭包
+          原型链与继承
         
       </div>
     </a>
@@ -487,7 +487,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
     </div>
   </div>
 
@@ -500,23 +500,15 @@
       <ul>
         
           <li>
-            <a href="/2019/03/22/sa/">sa</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/22/ssss/">ssss</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/22/ss/">ss</a>
-          </li>
-        
-          <li>
             <a href="/2019/03/20/写博客/">写博客</a>
           </li>
         
           <li>
             <a href="/2019/02/22/原型与原型链/">原型链与继承</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/22/重温JS(1)-类型/">ss</a>
           </li>
         
       </ul>
