@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ss | 李向的笔记</title>
+  <title>重温js-类型 | 李向的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="重温JS-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是">
+  <meta name="description" content="重温JS-类型导语这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是在操作对象的引用而不是实际的对象。为此，引用类">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ss">
+<meta property="og:title" content="重温js-类型">
 <meta property="og:url" content="http://yoursite.com/2018/02/22/重温JS(1)-类型/index.html">
 <meta property="og:site_name" content="李向的笔记">
-<meta property="og:description" content="重温JS-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是">
+<meta property="og:description" content="重温JS-类型导语这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是在操作对象的引用而不是实际的对象。为此，引用类">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/02/22/重温JS(1)-类型/assets/9GjmEq-1553222822386.png">
 <meta property="og:image" content="http://yoursite.com/2018/02/22/重温JS(1)-类型/assets/9GjdPK-1553222822515.png">
-<meta property="og:updated_time" content="2019-03-22T08:20:28.683Z">
+<meta property="og:updated_time" content="2019-03-22T08:45:43.746Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ss">
-<meta name="twitter:description" content="重温JS-类型导语七种数据数据类型，本篇博客主要讲数组和对象。 这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是">
+<meta name="twitter:title" content="重温js-类型">
+<meta name="twitter:description" content="重温JS-类型导语这篇博客不区分es6与js的差异。以es6为准。 js中变量没有类型而值有类型：基本数据类型值和引用类型值。基本类型就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。 引用类型的值是保存在内存中的对象。在操作对象时，实际上是在操作对象的引用而不是实际的对象。为此，引用类">
 <meta name="twitter:image" content="http://yoursite.com/2018/02/22/重温JS(1)-类型/assets/9GjmEq-1553222822386.png">
   
     <link rel="alternative" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
@@ -63,7 +63,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/JS/">JS</a></li>
 	        
 			</ul>
 		</nav>
@@ -85,13 +85,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="/1506674357@qq.com" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="mail" target="_blank" href="/li15066@outlook.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -126,13 +122,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="/1506674357@qq.com" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="mail" target="_blank" href="/li15066@outlook.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -143,7 +135,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/JS/">JS</a></li>
 		        
 				</ul>
 			</nav>
@@ -165,7 +157,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ss
+      重温js-类型
     </h1>
   
 
@@ -178,8 +170,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="重温JS-类型"><a href="#重温JS-类型" class="headerlink" title="重温JS-类型"></a>重温JS-类型</h1><h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>七种数据数据类型，本篇博客主要讲数组和对象。</p>
-<p>这篇博客不区分es6与js的差异。以es6为准。</p>
+        <h1 id="重温JS-类型"><a href="#重温JS-类型" class="headerlink" title="重温JS-类型"></a>重温JS-类型</h1><h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>这篇博客不区分es6与js的差异。以es6为准。</p>
 <p>js中变量没有类型而值有类型：基本数据类型值和引用类型值。<em>基本类型</em>就是简单的数据段。有五种：Undefined·Null·Boolean·Number·String。基本数据类型是按值访问的，因为可以操作保存在变量中的实际的值。</p>
 <p><em>引用类型</em>的值是保存在内存中的对象。在操作对象时，实际上是在操作对象的引用而不是实际的对象。为此，引用类型的值是按引用访问的。有如下几种：Object·Array·Date·Regexp·Function·Boolean·Number·String。后面三种是为了便于操作基本类型值而提供的。</p>
 <p>以上是《js高程》上的分类方法。但是如果直接写原始数据类型的话，有这七种：</p>
@@ -198,6 +189,7 @@
 </li>
 <li><p><code>symbol</code> – 在ES6中被加入的！</p>
 <p>很多子类型可以直接并入对象。</p>
+<a id="more"></a>
 </li>
 </ul>
 <h1 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h1><p>如果按照七种分法把数据类型分类就很好了。为什么还要按照《js高程》上面分的那么复杂呢。因为复制操作的不同。</p>
@@ -519,27 +511,6 @@
       
 
       
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
@@ -628,6 +599,11 @@
       </div>
     </a>
   
+  
+    <a href="/2018/01/22/写博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">写博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -834,7 +810,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">热爱编程的人</div>
   	  	
     	</section>
     

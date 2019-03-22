@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>原型链与继承 | 李向的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原型链和继承导语原型链，js里最重要的两条链之一。每个对象都链接到一个原型对象并且从中继承属性。本篇博客从最基本的写起，最终写到c最简单的几个实现继承的方法 构造函数·原型·实例构造函数在js中创建对象的方法有哪几种？简单的来说：一·对象字面量，二·工厂模式，三·构造函数，四·Object.create。对象字面量和工厂模不再赘述。深入剖析一下构造函数。也就是说在用new创建对象的时候这背后到底发">
+  <meta name="description" content="原型链和继承导语原型链，js里最重要的两条链之一。每个对象都链接到一个原型对象并且从中继承属性。本篇博客从最基本的写起，最终写到c最简单的几个实现继承的方法">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原型链与继承">
 <meta property="og:url" content="http://yoursite.com/2019/02/22/原型与原型链/index.html">
 <meta property="og:site_name" content="李向的笔记">
-<meta property="og:description" content="原型链和继承导语原型链，js里最重要的两条链之一。每个对象都链接到一个原型对象并且从中继承属性。本篇博客从最基本的写起，最终写到c最简单的几个实现继承的方法 构造函数·原型·实例构造函数在js中创建对象的方法有哪几种？简单的来说：一·对象字面量，二·工厂模式，三·构造函数，四·Object.create。对象字面量和工厂模不再赘述。深入剖析一下构造函数。也就是说在用new创建对象的时候这背后到底发">
+<meta property="og:description" content="原型链和继承导语原型链，js里最重要的两条链之一。每个对象都链接到一个原型对象并且从中继承属性。本篇博客从最基本的写起，最终写到c最简单的几个实现继承的方法">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fo3sqvn8nyj30jx07igm4.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fo3srq6e8fj30lu0f0jt3.jpg">
-<meta property="og:updated_time" content="2019-03-22T08:20:37.372Z">
+<meta property="og:updated_time" content="2019-03-22T08:44:21.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型链与继承">
-<meta name="twitter:description" content="原型链和继承导语原型链，js里最重要的两条链之一。每个对象都链接到一个原型对象并且从中继承属性。本篇博客从最基本的写起，最终写到c最简单的几个实现继承的方法 构造函数·原型·实例构造函数在js中创建对象的方法有哪几种？简单的来说：一·对象字面量，二·工厂模式，三·构造函数，四·Object.create。对象字面量和工厂模不再赘述。深入剖析一下构造函数。也就是说在用new创建对象的时候这背后到底发">
+<meta name="twitter:description" content="原型链和继承导语原型链，js里最重要的两条链之一。每个对象都链接到一个原型对象并且从中继承属性。本篇博客从最基本的写起，最终写到c最简单的几个实现继承的方法">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fo3sqvn8nyj30jx07igm4.jpg">
   
     <link rel="alternative" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
@@ -63,7 +63,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/JS/">JS</a></li>
 	        
 			</ul>
 		</nav>
@@ -85,13 +85,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="/1506674357@qq.com" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="mail" target="_blank" href="/li15066@outlook.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -126,13 +122,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="/1506674357@qq.com" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="mail" target="_blank" href="/li15066@outlook.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -143,7 +135,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/JS/">JS</a></li>
 		        
 				</ul>
 			</nav>
@@ -179,6 +171,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="原型链和继承"><a href="#原型链和继承" class="headerlink" title="原型链和继承"></a>原型链和继承</h1><h1 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h1><p>原型链，js里最重要的两条链之一。每个对象都链接到一个原型对象并且从中继承属性。本篇博客从最基本的写起，最终写到c最简单的几个实现继承的方法</p>
+<a id="more"></a>
 <h1 id="构造函数·原型·实例"><a href="#构造函数·原型·实例" class="headerlink" title="构造函数·原型·实例"></a>构造函数·原型·实例</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>在js中创建对象的方法有哪几种？简单的来说：一·对象字面量，二·工厂模式，三·构造函数，四·Object.create。对象字面量和工厂模不再赘述。深入剖析一下构造函数。也就是说在用new创建对象的时候这背后到底发生了什么?</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person (name,age,job) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.age = age</span><br><span class="line">    this.job = job</span><br><span class="line">&#125;</span><br><span class="line">let person1 = new Person(&apos;li&apos;,&apos;18&apos;,&apos;coder&apos;)</span><br><span class="line">let person2 =new Person(&apos;zhao&apos;,&apos;18&apos;,&apos;Psychological consultant&apos;)</span><br><span class="line">console.log(person1.name);</span><br><span class="line">console.log(person2.job);</span><br><span class="line">// li</span><br><span class="line">// Psychological consultant</span><br></pre></td></tr></table></figure>
 <p>什么是构造函数呢？也是一个普通函数，但是它生来就是为了结合new创建对象的，那就叫它构造函数。</p>
@@ -271,27 +264,6 @@
       
 
       
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
@@ -371,18 +343,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/20/写博客/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          写博客
-        
-      </div>
-    </a>
-  
   
     <a href="/2018/02/22/重温JS(1)-类型/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ss</div>
+      <div class="article-nav-title">重温js-类型</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -591,7 +554,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">热爱编程的人</div>
   	  	
     	</section>
     
