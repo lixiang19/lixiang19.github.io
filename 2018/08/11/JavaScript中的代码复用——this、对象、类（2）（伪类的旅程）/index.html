@@ -6,15 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 李向的笔记</title>
+  <title>JavaScript中的代码复用——this、对象、类（1）对象与this | 李向的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李向的笔记">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）原型链JS中有两条链，一条作用域链，闭包与this的指向与此链有关；一条是原型链，方法属性的查找和委托与此链有关。">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的代码复用——this、对象、类（1）对象与this">
+<meta property="og:url" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/index.html">
 <meta property="og:site_name" content="李向的笔记">
+<meta property="og:description" content="JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）原型链JS中有两条链，一条作用域链，闭包与this的指向与此链有关；一条是原型链，方法属性的查找和委托与此链有关。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/assets/13792683-f61dfef105be2c65.webp">
+<meta property="og:image" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/">
+<meta property="og:image" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/">
+<meta property="og:image" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/">
+<meta property="og:image" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/">
+<meta property="og:image" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/assets/13792683-3ce4be9f8680fbe1.webp">
+<meta property="og:image" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/assets/13792683-f1f6faee0d214a1c.webp">
+<meta property="og:updated_time" content="2019-04-08T13:31:41.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李向的笔记">
+<meta name="twitter:title" content="JavaScript中的代码复用——this、对象、类（1）对象与this">
+<meta name="twitter:description" content="JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）原型链JS中有两条链，一条作用域链，闭包与this的指向与此链有关；一条是原型链，方法属性的查找和委托与此链有关。">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/assets/13792683-f61dfef105be2c65.webp">
   
     <link rel="alternative" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
   
@@ -142,60 +155,250 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/《专注让努力更高效》读书笔记/" class="archive-article-date">
-  	<time datetime="2019-07-25T13:19:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/《专注让努力更高效》读书笔记/">《专注让努力更高效》读书笔记</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript中的代码复用——this、对象、类（1）对象与this
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/" class="archive-article-date">
+  	<time datetime="2018-08-11T12:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）"><a href="#JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）" class="headerlink" title="JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）"></a>JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）</h1><h1 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h1><p>JS中有两条链，一条作用域链，闭包与this的指向与此链有关；一条是原型链，方法属性的查找和委托与此链有关。</p>
+<a id="more"></a>
+<p>如下面代码所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let foo  = &#123;</span><br><span class="line">  a: 2</span><br><span class="line">&#125;</span><br><span class="line">let bar = &#123;&#125; </span><br><span class="line">bar.__proto__ = foo</span><br><span class="line">bar.a //? 2</span><br><span class="line">bar.__proto__=== foo //? true </span><br><span class="line">bar.hasOwnProperty(&apos;a&apos;) //? false 没有a但是可以调用a</span><br><span class="line">foo.hasOwnProperty(&apos;a&apos;) //? true</span><br><span class="line"></span><br><span class="line">// __proto__它的含义是原型指向，但不是标准属性不推荐使用，应该用</span><br><span class="line">Object.setPrototypeOf()（写操作）、</span><br><span class="line">Object.getPrototypeOf()（读操作）、Object.create()（生成操作）代替</span><br></pre></td></tr></table></figure>
+<p>新建一个空白的bar对象，并将原型链至foo。如下图所示</p>
+<p><img src="assets/13792683-f61dfef105be2c65.webp" alt="img"></p>
+<p>原型链示意图</p>
+<p>在js中任何对象的原型链最终指向于<code>Object.prototype</code>（它自身指向null）。在JS中，当访问对象属性或者调用函数时，如果未在当前对象找到，那么将会沿着原型链向上追溯，譬如<code>bar.hasOwnProperty</code>方法，<code>hasOwnProperty</code>是定义在<code>Object.prototype</code>上的，但是bar却可以调用，同样的bar也可以访问foo的属性a，值为2，但是<code>bar.hasOwnProperty(&#39;a&#39;)</code>可以看到false，说明其自身并不具有这个属性。</p>
+<h1 id="类的一些概念"><a href="#类的一些概念" class="headerlink" title="类的一些概念"></a>类的一些概念</h1><p>因为这一篇是写类的，所以用词用语都是下方的用语，在js中是不准确的也是和实际情况有歧义的。但是还是要这么说。</p>
+<ul>
+<li>类（Class）： 定义了一件事物的抽象特点，包含它的属性和方法</li>
+<li>对象（Object）：类的实例，通常通过 <code>new</code>生成，是具体的事物</li>
+<li>面向对象（OOP）三大特征：封装、继承、多态</li>
+<li>封装（Encapsulation）：将对数据的操作细节隐藏起来，只暴露对外的接口，外界调用端不需要也不可能知道细节，就能通过对外的接口来访问对象，同时也保证外界无法任意更改对象内不的数据</li>
+<li>继承（Inheritance）：子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性</li>
+<li>多态（Polymorphism）：由继承而产生了相关的不同的类，对同一个方法可以有不同的响应。</li>
+<li>存取器（getter&amp;&amp;setter）：用以改变属性的读取和赋值行为</li>
+<li>修饰符（Modifiers）：修饰符是一些关键字，用于限定成员或类型的性质。比如<code>public</code>表示共有属性或方法</li>
+<li>抽象类（Abstract Class）：抽象类是供其他类继承的基类，本身不允许被实例化。抽象类中的抽象方法必须在子类中被实现</li>
+<li>接口（Interfaces）：不同类之间公有的属性或方法，可以抽象成一个接口。接口可以被类实现（implements）。一个类只能继承自另一个类，但是可以实现多个接口。</li>
+</ul>
+<h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><p>先看看new的时候发生了什么事情</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function FunOne(a) &#123;</span><br><span class="line">  this.a = a</span><br><span class="line">  this.b = function () &#123;</span><br><span class="line">    return 3</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let ObjOne = new FunOne(1)</span><br><span class="line">ObjOne.a //?1</span><br></pre></td></tr></table></figure>
+<p>按照面向对象类的说法是，这个FunOne是构造函数,而new创建了一个新实例，也就是实例化的过程。<br>不过并不是这样，FunOne只是一个普通的函数和其他任何一个函数都没有什么区别,<br>函数可以立即执行可以当作返回值可以被函数或对象调用，这里就是new调用，FunOne是个普通的函数当它new调用时就被构造调用了。不过为了行文方便还是称之为构造函数，因为类总是要有构造函数的，那就假装它是吧。</p>
+<p><img src="./" alt="img"></p>
+<p>new调用</p>
+<p>记录下new调用的过程<br>new做了四件事：</p>
+<ol>
+<li>一个全新的对象会凭空创建</li>
+<li>这个新构建的对象被加入原型链</li>
+<li>这个新构建对象被设置为函数调用的this绑定（即是this指向这个新对象）然后执行构造函数中的语句</li>
+<li>返回这个对象<br>可以自己写个函数实现new的功能(毫无必要仅仅演示)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function build(name) &#123;</span><br><span class="line"> //新建一个对象</span><br><span class="line">  let F = &#123;&#125;</span><br><span class="line">//设置原型链</span><br><span class="line">  F.__proto__ = Foo.prototype</span><br><span class="line">//运行构造函数内语句</span><br><span class="line">  F.name = name</span><br><span class="line">//返回这个对象</span><br><span class="line">  return F</span><br><span class="line">&#125;</span><br><span class="line">function Foo(name) &#123;</span><br><span class="line">  this.name = name</span><br><span class="line">&#125;</span><br><span class="line">let foo1 = build(&apos;Mike&apos;) //起到了和new一样的作用</span><br><span class="line">foo1.name //?Mike</span><br></pre></td></tr></table></figure>
+<p>每一个函数都有一个prototype属性，且这个属性的值是对象，这个对象除了从构造函数复制过去的所有属性之外，还有个construcor属性且值为此构造函数，也就是这俩函数和对象互相为对方一个属性的值。如果查询一下会发现这个这个对象在控制台会输出FunOne{}也就是和构造函数同名了，不过为了不混淆，下文继续用<code>Funone.prototype</code>表示这个对象，写为prototype对象。原型对象定义为这个对象的<code>__proto__</code>指向的那个对象，名词指代清楚才能不搞混。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, job) &#123;</span><br><span class="line">  this.name = name</span><br><span class="line">  this.age = age</span><br><span class="line">  this.job = job</span><br><span class="line">  this.friends = [&apos;Shelby&apos;,&apos;Court&apos;]</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  constructor: Person, //因为Person.prototype对象被重新定义了所以要在新对象中添加上constructor属性来确认指向</span><br><span class="line">  sayName: function () &#123;</span><br><span class="line">    console.log(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let person1 = new Person(&apos;Nicholas&apos;, 29, &apos;Software Engineer&apos;)</span><br><span class="line">let person2 = new Person(&apos;Greg&apos;, 27, &apos;Doctor&apos;)</span><br><span class="line">person1.friends.push(&apos;Van&apos;)</span><br><span class="line">person1.friends //? [ &apos;Shelby&apos;, &apos;Court&apos;, &apos;Van&apos; ]</span><br><span class="line">person2.friends //? [ &apos;Shelby&apos;, &apos;Court&apos; ]</span><br><span class="line">person1.friends === person2.friends //? false</span><br><span class="line">person1.sayName === person2.sayName //? true</span><br><span class="line">person1.hasOwnProperty(&apos;sayName&apos;) //? false 实例person1并没有sayName方法</span><br><span class="line">Person.prototype.hasOwnProperty(&apos;sayName&apos;) //? true 在这个prototype对象上</span><br></pre></td></tr></table></figure>
+<p>知道了它们的指向了。我们可以这样构造一个对象,虽然没什么用。这个构造方式能成立因为 <code>bar</code>被<code>Objec.prototype</code>创建并被链接到<code>foo.prototype</code>这个对象上，然后<code>bar</code>可以沿着原型链查找并调用<code>foo.prototype</code>上的construcor属性，且此属性指向<code>foo()</code>函数，最终bar调用了foo函数且函数内this指向为bar。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function foo(name) &#123;</span><br><span class="line">  this.name = name</span><br><span class="line">&#125;</span><br><span class="line">let bar = Object.create(foo.prototype)</span><br><span class="line">bar.constructor(&apos;mike&apos;)</span><br><span class="line">bar.name //? mike</span><br></pre></td></tr></table></figure>
+<p>总结： 我们现在有了构造函数，有了prototype对象可以当作类，也有看new语句当作实例化。离伪装成类又近了一步。</p>
+<h1 id="原型模仿继承"><a href="#原型模仿继承" class="headerlink" title="原型模仿继承"></a>原型模仿继承</h1><h2 id="伪经典继承"><a href="#伪经典继承" class="headerlink" title="伪经典继承"></a>伪经典继承</h2><p>《高程》上的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(name)&#123;</span><br><span class="line">  this.name = name</span><br><span class="line">  this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]</span><br><span class="line">&#125;</span><br><span class="line">SuperType.sayColor = function () &#123;</span><br><span class="line">  return &apos;blue&apos;</span><br><span class="line">&#125;  </span><br><span class="line">SuperType.prototype.sayName = function()&#123;</span><br><span class="line">  return this.name</span><br><span class="line">&#125;</span><br><span class="line">function SubType(name, age)&#123;</span><br><span class="line">  SuperType.call(this, name)</span><br><span class="line">  this.age = age </span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType()</span><br><span class="line">SubType.prototype.constructor = SubType</span><br><span class="line">SubType.prototype.sayAge = function()&#123;</span><br><span class="line"> return this.age</span><br><span class="line">&#125;</span><br><span class="line">let instance1 = new SubType(&quot;Nicholas&quot;, 29)</span><br><span class="line">instance1.colors.push(&quot;black&quot;)</span><br><span class="line">instance1.colors//&quot;red,blue,green,black&quot;</span><br><span class="line">instance1.sayName()//&quot;Nicholas&quot;;</span><br><span class="line">instance1.sayAge() //29</span><br><span class="line">let instance2 = new SubType(&quot;Greg&quot;, 27);</span><br><span class="line">instance2.colors //&quot;red,blue,green&quot;</span><br><span class="line">instance2.sayName(); //&quot;Greg&quot;;</span><br><span class="line">instance2.sayAge(); //27</span><br><span class="line">SuperType.sayColor() //? &apos;blue&apos;</span><br><span class="line">instance1.sayColor() //? not a function</span><br><span class="line">=========================================================</span><br><span class="line">Object.getOwnPropertyDescriptors(SuperType.prototype) </span><br><span class="line">//?&#123;constructor：SuperType，sayName：fuc&#125;</span><br><span class="line">Object.getOwnPropertyDescriptors(SubType.prototype)</span><br><span class="line">//?&#123;construor：SubType，name：undefined，colors：&quot;red,blue,green&quot;，sayAge：func&#125;</span><br><span class="line">Object.getOwnPropertyDescriptors(instance1) </span><br><span class="line">//?&#123;name：&apos;Nicolas&apos;,colors:&quot;red,blue,green,black&quot;,age:&apos;29&apos;&#125;</span><br><span class="line">Object.getOwnPropertyDescriptors(instance2) </span><br><span class="line">//?&#123;name：&apos;Greg&apos;,colors:&quot;red,blue,green&quot;,age:&apos;27&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="./" alt="img"></p>
+<p>原型继承</p>
+<p>先利用<code>SubType.prototype = new SuperType()</code>得到一个对象只有name和colors的<code>SubType.prototype</code>且与<code>SuperType.prototype</code>链接，现在用<code>construcor</code>再连回去连到<code>SubType()</code>上。现在调用<code>new SubType()</code>创建新对象时不仅运行了<code>SubType()</code>内的语句并且用<code>call</code>使<code>SuperType</code>内语句在此环境运行，并且得到一个新的对象拥有name，colors和age属性。<code>instance1</code>的方法分别定义在原型链上方的两个对象上，调用的时候沿链查找。<code>sayColor()</code>为<code>SuperType()</code>独有，其他不能调用且<code>SubType</code>都不能继承。<br>现在有了父类，子类，实例。</p>
+<h2 id="extend-函数"><a href="#extend-函数" class="headerlink" title="extend 函数"></a>extend 函数</h2><p>这个方法在《高程》里被称为寄生组合方法用的函数名是<code>interitPorototype</code>，这里用extend和interit。思路依然是原型链的链接，将子类与父类链接起来<br>借用一个空对象然后将<code>child.prototype</code>和<code>parent.child</code>联系起来，下面用的<code>Object.create</code>方法可以少了一次new调用。<code>child.prototype</code>上少了不需要的属性，同样的上文中的也可以如此替换，<code>new F()</code>也是为了少创建个父类的新实例。都是为了减少调用父类的构造函数又起到链接的目的。<br>其余的就是将原来手工链接的语句放进函数里，基本上就是原来的省代码版，所以原型图不画了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function extend(child,parent) &#123;</span><br><span class="line">  let F = function() &#123;&#125;</span><br><span class="line">  F.prototype = parent.prototype</span><br><span class="line">  child.prototype = new F()</span><br><span class="line">  child.prototype.constructor = child</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function inherit(child, parent) &#123;</span><br><span class="line"> let F= Object.create(parent.prototype)</span><br><span class="line"> F.constructor = child</span><br><span class="line"> child.prototype = F</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复制下Typescript官网上由ts中class转译的继承代码，分为两部分，第一部分将子类构造函数与父类构造函数链接起来<code>extendStatics</code>实现继承静态属性，第二部分和上面写法一个意思。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var __extends = (this &amp;&amp; this.__extends) || (function () &#123;</span><br><span class="line">  var extendStatics = function (d, b) &#123;</span><br><span class="line">      extendStatics = Object.setPrototypeOf ||</span><br><span class="line">          (&#123; __proto__: [] &#125; instanceof Array &amp;&amp; function (d, b) &#123; d.__proto__ = b; &#125;) ||</span><br><span class="line">          function (d, b) &#123; for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; &#125;;</span><br><span class="line">      return extendStatics(d, b);</span><br><span class="line">  &#125;</span><br><span class="line">  return function (d, b) &#123;</span><br><span class="line">      extendStatics(d, b);</span><br><span class="line">      function __() &#123; this.constructor = d; &#125;</span><br><span class="line">      d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h1 id="ES6中的Class"><a href="#ES6中的Class" class="headerlink" title="ES6中的Class"></a>ES6中的Class</h1><p>class是es6新增的，class本质上是语法糖，内在还是原型链。</p>
+<h2 id="class的写法"><a href="#class的写法" class="headerlink" title="class的写法"></a>class的写法</h2><p>先看看class的写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  constructor(name,age) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.age = age</span><br><span class="line">  &#125;</span><br><span class="line">  static classMethod() &#123;</span><br><span class="line">    return &apos;hello&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  sayName() &#123;</span><br><span class="line">    return this.name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Person.classProperty = &apos;hi&apos;</span><br><span class="line">let person1 =new Person(&apos;Mike&apos;,18)</span><br><span class="line">person1.sayName() //? Mike</span><br><span class="line">Person.classMethod() //? hello</span><br><span class="line">Person.classProperty //? hi</span><br></pre></td></tr></table></figure>
+<p>语法很简单原来当作构造函数的里的语句被放在了constructor里面，函数本身的静态方法可以通过static添加，但是静态属性只能在类外添加。（提案可以将实例属性在class中的constructor外添加，且静态属性可以在类内添加。用babel转码可以使用，暂不讨论）。现在来测试一下并且画个原型链图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typeof Person //? functhion</span><br><span class="line">Person === Person.prototype.constructor //? true</span><br><span class="line">可以看出类也只是原型的另一种写法。</span><br></pre></td></tr></table></figure>
+<p>再测一下各个函数·对象拥有的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">person1.classProperty //?undefined</span><br><span class="line">person1.classMethod() //？not a function</span><br><span class="line">Object.getOwnPropertyDescriptors(Person) </span><br><span class="line">// &#123;classMethod(), classproperty: &apos;hi&apos;,prototype: Person&#123;&#125;&#125; </span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(Person.prototype) </span><br><span class="line">// &#123;contructor: Person(), sayName()&#125;</span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(person1) </span><br><span class="line">// &#123;name: &apos;Mike&apos;, age:&apos;18&apos;, sex&apos;man&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="./" alt="img"></p>
+<p>class</p>
+<p><img src="./" alt="img"></p>
+<p>枚举性</p>
+<p>类中定义的原型属性都是不可枚举的，和new构造函数写法不同，那个是可枚举的。</p>
+<p>定义在Person上的静态属性好好的保存在Person函数上并且实例person1无法调用，person1拥有自己的三个属性由类构造方法里的语句设置，实例可以通过原型链调用Person.prototype上的方法。和原型写法一样，除了枚举性。但是如果想要设置实例共享属性的话，就没办法在类上定义只能在<code>SuperType.prototype</code>上定义，依然要用到原型。</p>
+<h2 id="class的继承"><a href="#class的继承" class="headerlink" title="class的继承"></a>class的继承</h2><p>为了和《高程》上写的对比所以写相似的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class SuperType &#123;</span><br><span class="line">  constructor (name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]</span><br><span class="line">  &#125;</span><br><span class="line">  sayName () &#123;</span><br><span class="line">    return this.name</span><br><span class="line">  &#125;</span><br><span class="line">  static sayColor() &#123;</span><br><span class="line">    return &apos;blue&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">class SubType extends SuperType &#123;</span><br><span class="line">  constructor(name,age) &#123;</span><br><span class="line">    super(name)</span><br><span class="line">    this.age = age</span><br><span class="line">  &#125;</span><br><span class="line">  sayAge() &#123;</span><br><span class="line">   return this.age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let instance1 = new SubType(&apos;Nicholas&apos;,29)</span><br><span class="line">instance1.colors.push(&quot;black&quot;)</span><br><span class="line">let instance2 = new SubType(&apos;Greg&apos;,27)</span><br><span class="line"></span><br><span class="line">SubType.sayColor() //? &apos;blue&apos;</span><br><span class="line">instance1.colors //? [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;,&apos;&apos;black&apos;&apos;]</span><br><span class="line">instance1.sayAge() //? 28</span><br><span class="line">instance1.sayName() //? Nicholas</span><br></pre></td></tr></table></figure>
+<p>很明显能看出了省了很多代码，<br>定义在原型上的方法现在可以直接定义在类里，直接用extends继承，也就是链接原型链时，比用new少了一次构造函数调用，且不用被constructor指向迷惑。super起到了和call类似作用。下面检测一下画个原型图看看和《高程》上的有没有区别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Object.getPrototypeOf(SubType.prototype) </span><br><span class="line">//SuperType&#123;&#125;  即SuperType().prototype</span><br><span class="line"></span><br><span class="line">Object.getPrototypeOf(SubType) </span><br><span class="line">//SuperType()</span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(SuperType) </span><br><span class="line">//&#123;prototype: SuperType&#123;&#125; ,sayColor()&#125;</span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(SuperType.prototype) </span><br><span class="line">//&#123;constructor: SuperType(),sayName()&#125;</span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(SubType) </span><br><span class="line">//&#123;prototype: SubType&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(SubType.prototype) </span><br><span class="line">//&#123;constructor: SubType(), sayAge()&#125;</span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(instance1) </span><br><span class="line">//&#123;name:&apos;Nicolas&apos;,age:&apos;28&apos;, colors:[&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;,&quot;black&quot;]&#125;</span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(instance2) </span><br><span class="line">//&#123;name:&apos;Greg&apos;,age:&apos;27&apos;, colors:[&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="assets/13792683-3ce4be9f8680fbe1.webp" alt="img"></p>
+<p>class继承</p>
+<p>原型链的链接和《高程》写法多了一个SubType和SuperType两个函数直接的链接，以往都是直接链到Function上。这样子类能直接“继承”父类的静态方法sayColor(),实例不可调用。</p>
+<h2 id="super的使用"><a href="#super的使用" class="headerlink" title="super的使用"></a>super的使用</h2><p>在es6中新增了super关键字。<br>一种用法是用在子类的构造函数中，super()代表着父类的构造函数，必须写在子类构造函数this之前。起到的作用与SuperType.call(this, name)起到的作用是一样的。让父类的构造函数语句在子类的上下文环境下运行。<br>二种是super对象，在普通方法中，指向父类的prototype对象即SuperType.prototype，也就是说只有SuperType.prototype上的方法可以被调用，在子类上调用时父类原型方法中的this会指向当前子类，如果在实例上调用时，方法中的this会指向当前实例。<br>在静态方法中也就是static定义的方法中使用，此方法中指向父类。在子类调用通过super调用父类的静态方法时，this指向同样会变为当前子类。<br>用代码说明 还是用《高程》上的改造</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class SuperType &#123;</span><br><span class="line">  constructor (name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]</span><br><span class="line">    this.size = &apos;big&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  saySize() &#123;</span><br><span class="line">    return this.size</span><br><span class="line">  &#125;</span><br><span class="line">  sayName () &#123;</span><br><span class="line">    return this.name</span><br><span class="line">  &#125;</span><br><span class="line">  static sayColor() &#123;</span><br><span class="line">    return this.colors</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">class SubType extends SuperType &#123;</span><br><span class="line">  constructor(name,age,size) &#123;</span><br><span class="line">    super(name)</span><br><span class="line">    this.size = size || &apos;medium&apos;</span><br><span class="line">    this.age = age</span><br><span class="line">    super.saySize() //?  small, medium  因为下面new了两个实例所以运行了两次都指向了Subtype.protype子类prototype对象</span><br><span class="line">  &#125;</span><br><span class="line">  sayAge() &#123;</span><br><span class="line">   return this.age</span><br><span class="line">  &#125;</span><br><span class="line">  subSaySize() &#123;</span><br><span class="line">    return super.saySize()</span><br><span class="line">  &#125;</span><br><span class="line">  static subSayColor() &#123;</span><br><span class="line">    return super.sayColor() </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">SubType.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;,&apos;white&apos;] //静态属性暂时只能在外面添加</span><br><span class="line">SuperType.sayColor() //? undefined 因为父类没定义静态属性</span><br><span class="line">SubType.subSayColor() //?[&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;,&apos;white&apos;] this指向了子类</span><br><span class="line">let instance1 = new SubType(&apos;Nicholas&apos;,29, &apos;small&apos;)</span><br><span class="line">let instance2 = new SubType(&apos;Greg&apos;,27)</span><br><span class="line">instance1.subSaySize() //? small 指向子类实例本身</span><br><span class="line">instance2.subSaySize() //? medium 指向子类实例本身</span><br></pre></td></tr></table></figure>
+<p>总结 <code>super</code>总是会绑定到当前方法在<code>_Prototype_</code>链中的位置的更高一层，<br>其实就是在哪调用就指向谁，相当于自动call(this),再就是自动识别是否是静态方法。</p>
+<h1 id="Typescript中的类与接口"><a href="#Typescript中的类与接口" class="headerlink" title="Typescript中的类与接口"></a>Typescript中的类与接口</h1><p>ts是js的超集，添加了可选的静态类型和基于类的面向对象编程。<br>ts也是转译成js后运行的，但和es6语法糖不同，当在ts文件中写ts时，语法规则是按照ts来的，譬如加了<code>private</code>属性在转译成js后失效，但是在写ts时是限制外部访问性了的。如果访问会报错。<br>同样的ts中增加了继承接口抽象类等新概念，虽然可以转译成js再分析在js中会如何，但是这样是没有意义的。因为在js中类只是语法糖是原型的伪装，如果不清楚具体原型链接，那就会写出不能如期运行的代码，但是ts中可以完全假装存在ts定义的类，因为写错了语法提示器会提示错误的。所以这节就不会画原型图并且分析属性的归属，这节按照完全Typescript中定义的类的想法去理解。</p>
+<h2 id="基本写法"><a href="#基本写法" class="headerlink" title="基本写法"></a>基本写法</h2><p>和es6的class对比,基本一致，但是要先定义<code>name</code>，不然会提示类型‘Person’上不存在属性name</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    name: String</span><br><span class="line">    constructor(name: String) &#123;</span><br><span class="line">        this.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    sayName() &#123;</span><br><span class="line">        return this.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let person1 = new Person(&apos;Mike&apos;)</span><br><span class="line">person1.sayName() //?</span><br></pre></td></tr></table></figure>
+<p>测试一下发现依然和es6差不多依然是存在充当构造函数的函数，与函数的prototype属性，下面就不再测了。</p>
+<p><img src="assets/13792683-f1f6faee0d214a1c.webp" alt="img"></p>
+<p>TS</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class SuperType &#123;</span><br><span class="line">    name: string</span><br><span class="line">    colors: Array&lt;string&gt; //此处写出array会报错，其他都能小写这个不行。不知原因是什么</span><br><span class="line">    constructor(name: string) &#123;</span><br><span class="line">        this.name = name</span><br><span class="line">        this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">    sayName () &#123;</span><br><span class="line">        return this.name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">class SubType extends SuperType &#123;</span><br><span class="line">    age: number</span><br><span class="line">    constructor(name: string,age: number) &#123;</span><br><span class="line">        super(name)</span><br><span class="line">        this.age = age</span><br><span class="line">    &#125;</span><br><span class="line">    sayAge() &#123;</span><br><span class="line">        return this.age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let instance1 : SubType</span><br><span class="line">instance1 = new SubType(&apos;Nicholas&apos;, 28)</span><br><span class="line">instance1.sayAge() //?</span><br><span class="line">instance1.sayName() //?</span><br></pre></td></tr></table></figure>
+<p>基本上一样，不赘述。</p>
+<h2 id="一些修饰符与特性"><a href="#一些修饰符与特性" class="headerlink" title="一些修饰符与特性"></a>一些修饰符与特性</h2><ul>
+<li><code>public</code>修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 的</li>
+<li><code>private</code> 修饰的属性或方法是私有的，不能在声明它的类的外部访问</li>
+<li><code>protected</code> 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中也是允许被访问的</li>
+<li><code>readonly</code> 修饰的属性或方法是只读的，只读属性必须在声明时或构造函数里被初始化</li>
+<li><code>static</code> 修饰的属性或方法是静态的，静态属性是定义在类本身上的而不是实力上，prototype对象与实例都不能读取</li>
+<li>参数属性 参数属性可以方便地让我们在一个地方定义并初始化一个成员，少了一个赋值操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class SuperType &#123;</span><br><span class="line">    constructor(public name: string) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    sayName () &#123;</span><br><span class="line">        return this.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">===========================================</span><br><span class="line">function SuperType(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName = function () &#123;</span><br><span class="line">    return this.name;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>存取器：与es6一样在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。</li>
+<li>抽象类：抽象类是供其他类继承的基类，本身不允许被实例化。抽象类中的抽象方法必须在子类中被实现</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implements）。TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对对象的形状（Shape）进行描述。作用就是为这些类型命名和为你的代码或第三方代码定义契约。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">interface Person &#123;</span><br><span class="line">    name: string;</span><br><span class="line">    age: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let tom: Person = &#123;</span><br><span class="line">    name: &apos;Tom&apos;,</span><br><span class="line">    age: 25</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>没有调查就没有发言权，js中本来就没有强制类型，这个接口又是用类型约束对象、函数、类，没使用过。抄官网也没意思，不写了，如果以后用了有心得了再返回来写。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>首先，js中原来没有类，连类的概念都没有，一开始只能用prototype模仿，在es6中新加入了class增加了类的写法，但是依然只是语法糖，可以看见和原来的写法基本没区别，还是伪装成的类。在Typescript中的类功能比较完备，并且编写时有较好的错误提示。如果非要用类与继承的思路来写代码就用Typescript。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">读书</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/08/12/JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript中的代码复用——this、对象、类（1）对象与this
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/08/10/JavaScript中的代码复用——this、对象、类（1）对象与this/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript中的代码复用——this、对象、类（1）对象与this</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -218,8 +421,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

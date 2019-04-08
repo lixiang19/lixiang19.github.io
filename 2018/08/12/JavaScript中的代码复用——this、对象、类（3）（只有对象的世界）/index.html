@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 李向的笔记</title>
+  <title>JavaScript中的代码复用——this、对象、类（1）对象与this | 李向的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李向的笔记">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）只有对象的世界在静态强类型语言中，继承可能是唯一复用代码的方法，但是在JS中，有更简洁的的方法，其中包括借用、绑定、复制属性、原型链链接、以及从多个对象中混入(mixin)。在JS中不存在类，只存在对象，所以我们只要关注对象与对象之间的关系就行了。所以此节的继承的含义变为 对象继承了另一个对象的属性。上一节的含义是子类继">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的代码复用——this、对象、类（1）对象与this">
+<meta property="og:url" content="http://yoursite.com/2018/08/12/JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）/index.html">
 <meta property="og:site_name" content="李向的笔记">
+<meta property="og:description" content="JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）只有对象的世界在静态强类型语言中，继承可能是唯一复用代码的方法，但是在JS中，有更简洁的的方法，其中包括借用、绑定、复制属性、原型链链接、以及从多个对象中混入(mixin)。在JS中不存在类，只存在对象，所以我们只要关注对象与对象之间的关系就行了。所以此节的继承的含义变为 对象继承了另一个对象的属性。上一节的含义是子类继">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T13:31:23.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李向的笔记">
+<meta name="twitter:title" content="JavaScript中的代码复用——this、对象、类（1）对象与this">
+<meta name="twitter:description" content="JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）只有对象的世界在静态强类型语言中，继承可能是唯一复用代码的方法，但是在JS中，有更简洁的的方法，其中包括借用、绑定、复制属性、原型链链接、以及从多个对象中混入(mixin)。在JS中不存在类，只存在对象，所以我们只要关注对象与对象之间的关系就行了。所以此节的继承的含义变为 对象继承了另一个对象的属性。上一节的含义是子类继">
   
     <link rel="alternative" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
   
@@ -142,60 +147,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/《专注让努力更高效》读书笔记/" class="archive-article-date">
-  	<time datetime="2019-07-25T13:19:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/《专注让努力更高效》读书笔记/">《专注让努力更高效》读书笔记</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript中的代码复用——this、对象、类（1）对象与this
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/08/12/JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）/" class="archive-article-date">
+  	<time datetime="2018-08-12T12:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）"><a href="#JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）" class="headerlink" title="JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）"></a>JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）</h1><h1 id="只有对象的世界"><a href="#只有对象的世界" class="headerlink" title="只有对象的世界"></a>只有对象的世界</h1><p>在静态强类型语言中，继承可能是唯一复用代码的方法，但是在JS中，有更简洁的的方法，其中包括借用、绑定、复制属性、原型链链接、以及从多个对象中混入(mixin)。在JS中不存在类，只存在对象，所以我们只要关注对象与对象之间的关系就行了。所以此节的<code>继承</code>的含义变为 对象继承了另一个对象的属性。上一节的含义是子类继承了父类的属性并且实例化生成子类实例。</p>
+<a id="more"></a>
+<h1 id="借用"><a href="#借用" class="headerlink" title="借用"></a>借用</h1><p>有时候需要某个对象中的一两个方法，想要重用这些方法的时候又不希望与源对象产生继承关系，可以通过借用方法来实现。<code>call()、apply()、bind()</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let foo = &#123;</span><br><span class="line">  a: 2,</span><br><span class="line">  b: function () &#123;</span><br><span class="line">    return this.a</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let bar = &#123;</span><br><span class="line">  a: 5</span><br><span class="line">&#125;</span><br><span class="line">foo.b.call(bar) //? 5</span><br></pre></td></tr></table></figure>
+<p>在foo和bar不产生原型链接的情况下，bar调用了foo中的b方法，上篇<code>SuperType.call(this, name)</code>也是采用了这种方法。</p>
+<h1 id="克隆与混合"><a href="#克隆与混合" class="headerlink" title="克隆与混合"></a>克隆与混合</h1><h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><p>因为JS中有基础类型和引用类型，如果分别将属性赋值过去，那两个对象的引用属性如数组和方法对象还是共用的一个。<br>简单的实现浅拷贝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">  function copy(  targetObj,sourceObj ) &#123;</span><br><span class="line">    for (const key in sourceObj) &#123;</span><br><span class="line">      if (sourceObj.hasOwnProperty(key)) &#123;</span><br><span class="line">// 如果不希望发生覆盖可以 if (!(key in targetObj))只复制不存在于targetObj的属性</span><br><span class="line">        targetObj[key] = sourceObj[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return targetObj;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  let foo = &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    c: [1,2,3]</span><br><span class="line">  &#125;</span><br><span class="line">  let bar = copy(&#123;a:2,b:3&#125;,foo)</span><br><span class="line">  let baz = copy(&#123;&#125;,foo)</span><br><span class="line">  bar.c.push(4)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  baz.a //? 1</span><br><span class="line">  bar.a //? 1</span><br><span class="line">  bar.b //? 3</span><br><span class="line">  bar.c //? [1,2,3,4]</span><br><span class="line">  foo.c //?[1,2,3,4]</span><br><span class="line">  Object.getOwnPropertyNames(bar) //?[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]</span><br></pre></td></tr></table></figure>
+<p>引用类型共用所以修改数组c都会变，同名属性会被覆盖。而且拷贝的属性是有限制的，只拷贝源对象的自身属性（不拷贝继承属性），也不拷贝不可枚举的属性（enumerable: false）。ES6新增的对象结构赋值可以简单的实现此操作<br><code>let aClone = { ...a }</code><br>ES6新增的<code>Object.assign</code>也是这个功能，只不过更加复杂一些，<code>Object.assign(target, source1, source2)</code>可以有很多源对象。也就实现了混合。<br>可以用来</p>
+<ul>
+<li>为对象添加属性和方法</li>
+<li>克隆对象</li>
+<li>合并多个对象</li>
+<li>为属性制定默认值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const DEFAULTS = &#123;</span><br><span class="line">  logLevel: 0</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function foo(options) &#123;</span><br><span class="line">  options = Object.assign(&#123;&#125;, DEFAULTS, options);</span><br><span class="line">  console.log(options)</span><br><span class="line">&#125;</span><br><span class="line">foo(&#123;logLevel: 1&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="深克隆"><a href="#深克隆" class="headerlink" title="深克隆"></a>深克隆</h2><ol>
+<li>利用利用<code>JSON</code>对象中的<code>parse</code>和<code>stringify</code>。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let foo = &#123;</span><br><span class="line">  a: 2,</span><br><span class="line">  b: function () &#123;</span><br><span class="line">    return 3</span><br><span class="line">  &#125;,</span><br><span class="line">  c: [1,2,3]</span><br><span class="line">&#125;</span><br><span class="line">let bar = JSON.parse(JSON.stringify(foo))</span><br><span class="line">foo.b() //?3</span><br><span class="line">bar.a //?2</span><br><span class="line">bar.c.push(4)</span><br><span class="line">foo.c //?[1,2,3]</span><br><span class="line">bar.c //?[1,2,3,4]</span><br><span class="line">Object.getOwnPropertyNames(bar) //?[a,c]</span><br></pre></td></tr></table></figure>
+<p>可以看到函数丢了，序列化JavaScript对象时，所有函数和原型成员会被有意忽略，但是数组和对象都会被完整保留，在复制<code>JSON</code>对象时这个方法可以使用。</p>
+<ol>
+<li>递归</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function copyDeep(targetObj,sourceObj) &#123;</span><br><span class="line">  toStr = Object.prototype.toString</span><br><span class="line">  astr = &apos;[object Array]&apos;</span><br><span class="line">  for (const key in sourceObj) &#123;</span><br><span class="line">    if (sourceObj.hasOwnProperty(key)) &#123;</span><br><span class="line">      if (typeof sourceObj[key] === &apos;object&apos;) &#123;</span><br><span class="line">        targetObj[key] = (toStr.call(sourceObj[i]) === astr ? [] :&#123;&#125;)</span><br><span class="line">        copyDeep(targetObj[key],sourceObj[key])</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        targetObj[key] = sourceObj[key]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单的实现一下，这个代码很有问题。实际运用中最好使用<code>lodash</code>库来进行深克隆</p>
+<h2 id="不克隆"><a href="#不克隆" class="headerlink" title="不克隆"></a>不克隆</h2><p>简单想一下克隆的应用场景，一是数据持久化，二是在不可变对象的情况下修改对象。非要深度克隆遍历所有属性继承属性数组对象函数的情况很少。这样在第一种情况下可以用<code>JSON</code>很好的实现。第二种情况，可以使用库来实现，比如<a href="https://github.com/ecomfe/diffy-update" target="_blank" rel="noopener">diffy-update</a>或者<a href="http://facebook.github.io/immutable-js/" target="_blank" rel="noopener">Immutable.js</a>。因为没有用过就不细说了，下次特意用一下再写。</p>
+<h1 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h1><p>Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的<code>__proto__</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let foo  = &#123;</span><br><span class="line">  a: 2,</span><br><span class="line">  b: function (params) &#123;</span><br><span class="line">    return 3</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let bar = Object.create(foo)</span><br><span class="line">bar.a //? 2 </span><br><span class="line">bar.b() // 3</span><br><span class="line"></span><br><span class="line">Object.getOwnPropertyDescriptors(bar) //? &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>和文章开头的例子一样，bar依然是个空白的对象，调用的方法都是沿着原型链向上查找的，为了不引起困惑让代码清晰。可以在bar上设置新方法调用的时候调用这个新方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bar.c = function () &#123;</span><br><span class="line">  return this.b()</span><br><span class="line">&#125;</span><br><span class="line">bar.c() //?3</span><br></pre></td></tr></table></figure>
+<p>这样我们可以调用在bar上切实存在的属性方法又来源于foo</p>
+<h1 id="行为委托"><a href="#行为委托" class="headerlink" title="行为委托"></a>行为委托</h1><p>这种复用的实质是JS中只存在对象与对象的链接，像上文一样，我们可以通过让两个对象链接在一起，从而使一个能够使用另一个的方法。<br>一个栗子，虽然很想用前面那个改造，而且也可以实现，但是<code>SuperType</code>在此节语境下有歧义并且不符合本节只有对象的思路。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let Foo = &#123;</span><br><span class="line">  init(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">  &#125;,</span><br><span class="line">  identify() &#123;</span><br><span class="line">    return this.name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let Bar = Object.create(Foo)</span><br><span class="line">Bar.speak = function () &#123;</span><br><span class="line">  console.log(`Hello, I am $&#123;this.identify()&#125;`)</span><br><span class="line">&#125;</span><br><span class="line">let b1 = Object.create(Bar)</span><br><span class="line">b1.init(&apos;b1&apos;)</span><br><span class="line">let b2 = Object.create(Bar)</span><br><span class="line">b2.init(&apos;b2&apos;)</span><br><span class="line">b1.speak() //Hello I am b1</span><br><span class="line">b2.speak() //Hello I am b2</span><br></pre></td></tr></table></figure>
+<p>这段代码中一共有四个对象，原型链接清晰明了。没有prototype对象也没有consructor的指向迷惑。这个原型图不需要画了，代码上就一目了然。</p>
+<h1 id="委托的应用"><a href="#委托的应用" class="headerlink" title="委托的应用"></a>委托的应用</h1><p>在《你不知道的js》上看的这种使用模式，在《js设计模式》上也有。有一些应用例子，但是复制粘贴也没意思，和typescript一样，没有在实际应用中使用过。这个也是等写几个demo后回来写。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在js中还是用对象与原型链的方式比较舒服，没有任何歧义。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">读书</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/12/JavaScript中的代码复用——this、对象、类（3）（只有对象的世界）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/07/25/《专注让努力更高效》读书笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          《专注让努力更高效》读书笔记
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/08/11/JavaScript中的代码复用——this、对象、类（2）（伪类的旅程）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript中的代码复用——this、对象、类（1）对象与this</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -218,8 +353,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
