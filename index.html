@@ -152,6 +152,193 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-实现微任务版本的promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/09/实现微任务版本的promise/">实现微任务版本的promise</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/09/实现微任务版本的promise/" class="archive-article-date">
+  	<time datetime="2019-04-09T10:11:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="实现微任务版本的promise"><a href="#实现微任务版本的promise" class="headerlink" title="实现微任务版本的promise"></a>实现微任务版本的promise</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>谷歌一下手写promise能找到好多，但是都有一个问题就是用setTimeout实现，用来理解promise是足够了，但是测试起来就会发现表现和es6中promise不一致，因为es6中的promise是输入微任务的。所以决定写一篇博客记录一下做一个微任务版本的promise，用MutationObserver来实现浏览器版本的微任务</p>
+<p>参考博客：</p>
+<p><a href="https://github.com/xieranmaya/blog/issues/3" target="_blank" rel="noopener">剖析Promise内部结构，一步一步实现一个完整的、能通过所有Test case的Promise类</a></p>
+<p><a href="https://juejin.im/post/5aa3f7b9f265da23766ae5ae" target="_blank" rel="noopener">从一道Promise执行顺序的题目看Promise实现</a></p>
+<p><a href="https://github.com/calvinmetcalf/immediate" target="_blank" rel="noopener">nexttick库</a></p>
+<p><a href="https://github.com/calvinmetcalf/lie" target="_blank" rel="noopener">开源promise polyfill</a></p>
+<p><a href="https://ustbhuangyi.github.io/vue-analysis/reactive/next-tick.html#vue-%E7%9A%84%E5%AE%9E%E7%8E%B0" target="_blank" rel="noopener">vue中的next的实现</a></p>
+<p><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">阮一峰es6入门promise</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">阮一峰再谈Event Loop</a></p>
+<p>当然还有mdn，基本参考了以上这些博客。做一个梳理和总结，最终实现一个微任务版本的promise</p>
+<h2 id="概念梳理"><a href="#概念梳理" class="headerlink" title="概念梳理"></a>概念梳理</h2><p><img src="E:/图片管理/bg2014100802.png" alt="Event Loop"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/09/实现微任务版本的promise/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-this指向函数本身" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/09/this指向函数本身/">this指向函数本身</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/09/this指向函数本身/" class="archive-article-date">
+  	<time datetime="2019-04-09T06:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="this指向函数本身"><a href="#this指向函数本身" class="headerlink" title="this指向函数本身"></a>this指向函数本身</h1><p>今天实现call的时候发现了一件以前没注意到的事情。this竟然能指向函数本身。</p>
+<ol>
+<li><p>方法调用模式</p>
+<p>当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。很简单不配代码。</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>函数调用模式</p>
+<p>当一个函数并非一个对象的属性时而是作为单独变量出现，在这种模式下，this指向为Global对象，在浏览器中就是window对象。这里其实有个问题。如果环境是es6默认启用严格模式的话，没有调用者的函数this是undefined。也就是说其实前面那个小例子是跑不出来的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = add(<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li><p>构造器调用模式</p>
+<p>在《从js进化到es》中原型里写过。new foo()。如果一个函数前面带上new来调用，那么将会创建一个原型连接到该函数的prototype成员的新对象，同时this会绑定到那个新对象上。也就是说this是将要作为生成对象返回的那个对象。</p>
+</li>
+<li><p>Apply调用模式</p>
+<p>使用call·apply·bind这些内置函数时。this指的是绑定对象，也就是函数的第一个参数。</p>
+</li>
+<li><p>箭头函数</p>
+<p>箭头函数内部的this对象就是定义时所在的对象，而不是使用时所在的对象。也就是箭头函数this指向是遵循词法作用域的，就像一个变量一样会沿词法作用域像上寻找将找寻结果的第一个作为this指向。</p>
+</li>
+</ol>
+<p>上面是以前总结的，核心思想大概就是this肯定得指向一个对象的，这个对象就是调用者，不管它用什么方法调用</p>
+<h2 id="让this指向函数自身"><a href="#让this指向函数自身" class="headerlink" title="让this指向函数自身"></a>让this指向函数自身</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'foo函数运行了'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.ca = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>()</span><br><span class="line">&#125;</span><br><span class="line">foo.ca()</span><br><span class="line"><span class="comment">//</span></span><br><span class="line">[<span class="built_in">Function</span>: foo]</span><br><span class="line">foo函数运行了</span><br></pre></td></tr></table></figure>
+<p>可以看到this指向foo自身且this是一个函数</p>
+<p>再改造一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'foo函数运行了'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo.ca = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'this是'</span>, <span class="keyword">this</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'this的类型'</span>, <span class="keyword">typeof</span> <span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'foo是'</span>, foo)</span><br><span class="line">foo.ca()</span><br></pre></td></tr></table></figure>
+<p>这样就能看出原因了，其实还是存在调用者的，只不过不是对象调用函数foo而是函数foo调用了函数ca。也就是说this的指向依然没有超出前面总结的几点。</p>
+<p>JavaScript里函数是可以调用函数的且this指向调用者函数</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/09/this指向函数本身/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode刷题《》简单》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -175,28 +362,9 @@
         <h1 id="leetcode刷题《简单》"><a href="#leetcode刷题《简单》" class="headerlink" title="leetcode刷题《简单》"></a>leetcode刷题《简单》</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>只写思路，代码存放在github里。<a href="https://github.com/lixiang19/leetcode" target="_blank" rel="noopener">点这里</a></p>
 <p>先刷简单的，刷完简单的之后按标签刷中等难度。</p>
 <p>easy难度大约有130道，暂时每天刷一道吧。</p>
-<h2 id="已完成"><a href="#已完成" class="headerlink" title="已完成"></a>已完成</h2><ol>
-<li><p>两数之和</p>
-<p>思路：用暴力破解法时间复杂度为O(n^2),通过哈希结构来以空间复杂度换时间复杂度。</p>
-<p>遍历nums的同时将满足条件的值保存并在遍历其他数组项时进行判断。时间复杂度为O(n)</p>
-</li>
-<li><p>整数反转</p>
-<p>思路：将数字想象为一个队列，从队列头取出并加入队列尾，取出方法为%除于，加入方法为原数字/10后取整相加。判断溢出方法为计算结果/10取整后与原算式中乘数比较是否相同。</p>
-</li>
-<li><p>回文数</p>
-<p>思路：同整数反转将数字队列头移至队列尾，如果是回文数则过程中肯定会出现与原数字相同的情况。</p>
-</li>
-<li><p>罗马数字转整数</p>
-<p>思路：建立哈希表，将字符串分割转为数组后再转换位数字，从左至右，若左比右小则左边变为负值。</p>
-<p>测试后通过是通过了，但是打败了2%的人。慢得可怜。</p>
-</li>
-<li><p>最长公共前缀</p>
-<p>  思路一：最简单的思路：以数组第一项为前缀判断初始标准，然后与第二个成员比较后得出两者公共前缀，继续以此比较第三个，依次进行。</p>
-<p>  思路二：以数组第一项为前缀判断初始标准，然后将标准的第一个字符串与其余项的第一个字符串对比，接着取第二个字符串与其余项第二个字符串对比。</p>
-<p>  思路三:利用字典树（前缀树）    </p>
-</li>
-</ol>
-
+        
+          <a class="article-more-a" href="/2019/04/02/leetcode刷题《》简单》/#more">more >></a>
+        
       
 
       
@@ -801,158 +969,6 @@
 
 
   
-    <article id="post-JavaScript中的代码复用——this、对象、类（1）对象与this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/10/JavaScript中的代码复用——this、对象、类（1）对象与this/">JavaScript中的代码复用——this、对象、类（1）对象与this</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/10/JavaScript中的代码复用——this、对象、类（1）对象与this/" class="archive-article-date">
-  	<time datetime="2018-08-10T12:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="JavaScript中的代码复用——this、对象、类（1）对象与this"><a href="#JavaScript中的代码复用——this、对象、类（1）对象与this" class="headerlink" title="JavaScript中的代码复用——this、对象、类（1）对象与this"></a>JavaScript中的代码复用——this、对象、类（1）对象与this</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一共有三篇，这一篇总结复习一下基础知识。包括js中的作用域链和原型链、this的指向、对象的一些特性与方法。<br>内容来源于《你不知道的js》《阮一峰ES6入门》《JavaScript语言精粹》《JavaScript高级程序设计》《JavaScript设计模式》《JavaScript模式》《MDN web文档》<br>本博客没有什么有价值的知识，仅作总结梳理之用，初学者可以看看。</p>
-        
-          <a class="article-more-a" href="/2018/08/10/JavaScript中的代码复用——this、对象、类（1）对象与this/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/10/JavaScript中的代码复用——this、对象、类（1）对象与this/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-《专注让努力更高效》读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/《专注让努力更高效》读书笔记/">《专注让努力更高效》读书笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/25/《专注让努力更高效》读书笔记/" class="archive-article-date">
-  	<time datetime="2018-07-25T13:19:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>专注让努力更高效</p>
-        
-          <a class="article-more-a" href="/2018/07/25/《专注让努力更高效》读书笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">读书</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/25/《专注让努力更高效》读书笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1042,11 +1058,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">

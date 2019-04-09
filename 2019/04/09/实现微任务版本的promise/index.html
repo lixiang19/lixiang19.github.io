@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>今天开始学less | 李向的笔记</title>
+  <title>实现微任务版本的promise | 李向的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Get Startless是一门css预处理语言，也就是说要先编译成css才会运行，可以运行在node，浏览器上。在vue里用less非常简单。 1npm install less less-loader --save 利用npm安装好依赖就行。在组件里用下面的代码写less 1&amp;lt;style scoped lang=&amp;quot;less&amp;quot;&amp;gt;">
-<meta name="keywords" content="CSS">
+  <meta name="description" content="实现微任务版本的promise前言谷歌一下手写promise能找到好多，但是都有一个问题就是用setTimeout实现，用来理解promise是足够了，但是测试起来就会发现表现和es6中promise不一致，因为es6中的promise是输入微任务的。所以决定写一篇博客记录一下做一个微任务版本的promise，用MutationObserver来实现浏览器版本的微任务 参考博客： 剖析Promis">
+<meta name="keywords" content="JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="今天开始学less">
-<meta property="og:url" content="http://yoursite.com/2018/01/25/今天开始学less/index.html">
+<meta property="og:title" content="实现微任务版本的promise">
+<meta property="og:url" content="http://yoursite.com/2019/04/09/实现微任务版本的promise/index.html">
 <meta property="og:site_name" content="李向的笔记">
-<meta property="og:description" content="Get Startless是一门css预处理语言，也就是说要先编译成css才会运行，可以运行在node，浏览器上。在vue里用less非常简单。 1npm install less less-loader --save 利用npm安装好依赖就行。在组件里用下面的代码写less 1&amp;lt;style scoped lang=&amp;quot;less&amp;quot;&amp;gt;">
+<meta property="og:description" content="实现微任务版本的promise前言谷歌一下手写promise能找到好多，但是都有一个问题就是用setTimeout实现，用来理解promise是足够了，但是测试起来就会发现表现和es6中promise不一致，因为es6中的promise是输入微任务的。所以决定写一篇博客记录一下做一个微任务版本的promise，用MutationObserver来实现浏览器版本的微任务 参考博客： 剖析Promis">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-08T13:30:03.315Z">
+<meta property="og:image" content="e:/图片管理/bg2014100802.png">
+<meta property="og:updated_time" content="2019-04-09T10:43:27.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="今天开始学less">
-<meta name="twitter:description" content="Get Startless是一门css预处理语言，也就是说要先编译成css才会运行，可以运行在node，浏览器上。在vue里用less非常简单。 1npm install less less-loader --save 利用npm安装好依赖就行。在组件里用下面的代码写less 1&amp;lt;style scoped lang=&amp;quot;less&amp;quot;&amp;gt;">
+<meta name="twitter:title" content="实现微任务版本的promise">
+<meta name="twitter:description" content="实现微任务版本的promise前言谷歌一下手写promise能找到好多，但是都有一个问题就是用setTimeout实现，用来理解promise是足够了，但是测试起来就会发现表现和es6中promise不一致，因为es6中的promise是输入微任务的。所以决定写一篇博客记录一下做一个微任务版本的promise，用MutationObserver来实现浏览器版本的微任务 参考博客： 剖析Promis">
+<meta name="twitter:image" content="e:/图片管理/bg2014100802.png">
   
     <link rel="alternative" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
   
@@ -155,86 +157,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-今天开始学less" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-实现微任务版本的promise" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      今天开始学less
+      实现微任务版本的promise
     </h1>
   
 
         
-        <a href="/2018/01/25/今天开始学less/" class="archive-article-date">
-  	<time datetime="2018-01-25T12:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-25</time>
+        <a href="/2019/04/09/实现微任务版本的promise/" class="archive-article-date">
+  	<time datetime="2019-04-09T10:11:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Get-Start"><a href="#Get-Start" class="headerlink" title="Get Start"></a>Get Start</h2><p>less是一门css预处理语言，也就是说要先编译成css才会运行，可以运行在node，浏览器上。在vue里用less非常简单。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install less less-loader --save</span><br></pre></td></tr></table></figure>
-<p>利用npm安装好依赖就行。在组件里用下面的代码写less</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped lang=&quot;less&quot;&gt;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li>变量</li>
-<li>混合<ol>
-<li>命名空间</li>
-<li>参数</li>
-<li>@arguments</li>
-<li>匹配模式</li>
-<li>作为函数使用</li>
-</ol>
-</li>
-<li>嵌套<ul>
-<li>作用域</li>
-<li>父选择器</li>
-</ul>
-</li>
-<li>运算与函数</li>
-</ul>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>和其他语言一样可以设定一个常量。如下代码所示和let a=1相似。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@background-color: #ffffff;</span><br><span class="line">@text-color: #1A237E;</span><br><span class="line"></span><br><span class="line">p&#123;</span><br><span class="line">  background-color: @background-color;</span><br><span class="line">  color: @text-color;</span><br><span class="line">  padding: 15px;</span><br><span class="line">&#125;</span><br><span class="line">ul &#123;</span><br><span class="line">  background-color: @background-color;</span><br><span class="line">&#125;</span><br><span class="line">li &#123;</span><br><span class="line">  color: @text-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>变量的作用就是把值定义在一个地方，然后在各处使用，这样能让代码更易维护：</p>
-<h2 id="混合"><a href="#混合" class="headerlink" title="混合"></a>混合</h2><p>混合就是把某个选择器中的样式拿过来使用。可以用类选择器也可以用id选择器。官网上的例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.my-mixin &#123;</span><br><span class="line">  color: black;</span><br><span class="line">&#125;</span><br><span class="line">.my-other-mixin() &#123;</span><br><span class="line">  background: white;</span><br><span class="line">&#125;</span><br><span class="line">.class &#123;</span><br><span class="line">  .my-mixin;</span><br><span class="line">  .my-other-mixin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.my-mixin &#123;</span><br><span class="line">  color: black;</span><br><span class="line">&#125;</span><br><span class="line">.class &#123;</span><br><span class="line">  color: black;</span><br><span class="line">  background: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到，如果不想让mixin被输出，加个括号就行。</p>
-<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#my-library &#123;</span><br><span class="line">  .my-mixin() &#123;</span><br><span class="line">    color: black;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">// which can be used like this</span><br><span class="line">.class &#123;</span><br><span class="line">  #my-library &gt; .my-mixin();</span><br><span class="line">  #outer.inner; 简写&gt;和()都是可以省略的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以把mixin放在一个id选择器下，这样可以确保不会冲突。</p>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.mixin(@color: black; @margin: 10px; @padding: 20px) &#123;</span><br><span class="line">  color: @color;</span><br><span class="line">  margin: @margin;</span><br><span class="line">  padding: @padding;</span><br><span class="line">&#125;</span><br><span class="line">.class1 &#123;</span><br><span class="line">  .mixin(@margin: 20px; @color: #33acfe);</span><br><span class="line">&#125;</span><br><span class="line">.class2 &#123;</span><br><span class="line">  .mixin(#efca44; @padding: 40px);</span><br><span class="line">&#125;</span><br><span class="line">转换后的</span><br><span class="line">.class1 &#123;</span><br><span class="line">  color: #33acfe;</span><br><span class="line">  margin: 20px;</span><br><span class="line">  padding: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.class2 &#123;</span><br><span class="line">  color: #efca44;</span><br><span class="line">  margin: 10px;</span><br><span class="line">  padding: 40px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过上面的例子可以看出</p>
-<ul>
-<li><p>可以使用多个参数，利用分号来分隔。</p>
-</li>
-<li><p>有默认值</p>
-</li>
-<li><p>可以通过命名来对应</p>
-</li>
-<li><p>@arguments包含所有传入的参数</p>
-<h3 id="arguments"><a href="#arguments" class="headerlink" title="@arguments"></a>@arguments</h3></li>
-</ul>
-<p>@arguments包含所有传入的参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.box-shadow(@x: 0; @y: 0; @blur: 1px; @color: #000) &#123;</span><br><span class="line">  -webkit-box-shadow: @arguments;</span><br><span class="line">     -moz-box-shadow: @arguments;</span><br><span class="line">          box-shadow: @arguments;</span><br><span class="line">&#125;</span><br><span class="line">.big-block &#123;</span><br><span class="line">  .box-shadow(2px; 5px);</span><br><span class="line">&#125;</span><br><span class="line">转换后</span><br><span class="line">.big-block &#123;</span><br><span class="line">  -webkit-box-shadow: 2px 5px 1px #000;</span><br><span class="line">     -moz-box-shadow: 2px 5px 1px #000;</span><br><span class="line">          box-shadow: 2px 5px 1px #000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h3><p>可以根据传入的参数来改变混合的行为，看例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.mixin(dark; @color) &#123;</span><br><span class="line">  color: darken(@color, 10%);</span><br><span class="line">&#125;</span><br><span class="line">.mixin(light; @color) &#123;</span><br><span class="line">  color: lighten(@color, 10%);</span><br><span class="line">&#125;</span><br><span class="line">.mixin(@_; @color) &#123;</span><br><span class="line">  display: block;</span><br><span class="line">&#125;</span><br><span class="line">@switch: light;</span><br><span class="line"></span><br><span class="line">.class &#123;</span><br><span class="line">  .mixin(@switch; #888);</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">.class &#123;</span><br><span class="line">  color: #a2a2a2;</span><br><span class="line">  display: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="作为函数使用"><a href="#作为函数使用" class="headerlink" title="作为函数使用"></a>作为函数使用</h3><p>在mixin中定义的所有变量都是可见的，可以在调用者的作用域中使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.average(@x, @y) &#123;</span><br><span class="line">  @average: ((@x + @y) / 2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div &#123;</span><br><span class="line">  .average(16px, 50px); // &quot;call&quot; the mixin</span><br><span class="line">  padding: @average;    // use its &quot;return&quot; value</span><br><span class="line">&#125;</span><br><span class="line">结果是：</span><br><span class="line"></span><br><span class="line">div &#123;</span><br><span class="line">  padding: 33px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><p>嵌套可用于以与页面的HTML结构相匹配的方式构造样式表，同时减少了冲突的机会。下面是一个无序列表的例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@text-color: #000000;</span><br><span class="line"></span><br><span class="line">ul&#123;</span><br><span class="line">    @text-color: #fff;</span><br><span class="line">    background-color: #03A9F4;</span><br><span class="line">    padding: 10px;</span><br><span class="line">    list-style: none;</span><br><span class="line"></span><br><span class="line">    li&#123;</span><br><span class="line">        color: @text-color;</span><br><span class="line">        border-radius: 3px;</span><br><span class="line">        margin: 10px 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">ul &#123;</span><br><span class="line">    background-color: #03A9F4;</span><br><span class="line">    padding: 10px;</span><br><span class="line">    list-style: none;</span><br><span class="line">&#125;</span><br><span class="line">ul li &#123;</span><br><span class="line">    color: #ffffff;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    margin: 10px 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>就像在其它高级语言中一样， <code>Less</code> 的变量根据范围接受它们的值。如果在指定范围内没有关于变量值的声明， <code>less</code> 会一直往上查找，直至找到离它最近的声明。上例中li color的值可以看出。</p>
-<h3 id="父选择器"><a href="#父选择器" class="headerlink" title="父选择器"></a>父选择器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">a &#123;</span><br><span class="line">  color: blue;</span><br><span class="line">  &amp;:hover &#123;</span><br><span class="line">    color: green;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a &#123;</span><br><span class="line">  color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a:hover &#123;</span><br><span class="line">  color: green;</span><br><span class="line">&#125;</span><br><span class="line">主要用于伪类</span><br></pre></td></tr></table></figure>
-<h2 id="运算与函数"><a href="#运算与函数" class="headerlink" title="运算与函数"></a>运算与函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">任何数字、颜色或者变量都可以参与运算</span><br><span class="line">@base: 5%;</span><br><span class="line">@filler: @base * 2;</span><br><span class="line">@other: @base + @filler;</span><br><span class="line"></span><br><span class="line">color: #888 / 4;</span><br><span class="line">background-color: @base-color + #111;</span><br><span class="line">height: 100% / 2 + @filler;</span><br></pre></td></tr></table></figure>
-<p>Less 内置了多种函数用于转换颜色、处理字符串、算术运算等。这些函数在函数手册中有详细介绍。</p>
-<p><a href="http://less.bootcss.com/functions/" target="_blank" rel="noopener">点击进入手册</a></p>
-<p>函数的用法非常简单。下面这个例子将介绍如何将 0.5 转换为 50%，将颜色饱和度增加 5%，以及颜色亮度降低 25% 并且色相值增加 8 等用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@base: #f04615;</span><br><span class="line">@width: 0.5;</span><br><span class="line"></span><br><span class="line">.class &#123;</span><br><span class="line">  width: percentage(@width); // returns `50%`</span><br><span class="line">  color: saturate(@base, 5%);</span><br><span class="line">  background-color: spin(lighten(@base, 25%), 8);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>less的好处：复用，便于修改，便于结构化。</p>
+        <h1 id="实现微任务版本的promise"><a href="#实现微任务版本的promise" class="headerlink" title="实现微任务版本的promise"></a>实现微任务版本的promise</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>谷歌一下手写promise能找到好多，但是都有一个问题就是用setTimeout实现，用来理解promise是足够了，但是测试起来就会发现表现和es6中promise不一致，因为es6中的promise是输入微任务的。所以决定写一篇博客记录一下做一个微任务版本的promise，用MutationObserver来实现浏览器版本的微任务</p>
+<p>参考博客：</p>
+<p><a href="https://github.com/xieranmaya/blog/issues/3" target="_blank" rel="noopener">剖析Promise内部结构，一步一步实现一个完整的、能通过所有Test case的Promise类</a></p>
+<p><a href="https://juejin.im/post/5aa3f7b9f265da23766ae5ae" target="_blank" rel="noopener">从一道Promise执行顺序的题目看Promise实现</a></p>
+<p><a href="https://github.com/calvinmetcalf/immediate" target="_blank" rel="noopener">nexttick库</a></p>
+<p><a href="https://github.com/calvinmetcalf/lie" target="_blank" rel="noopener">开源promise polyfill</a></p>
+<p><a href="https://ustbhuangyi.github.io/vue-analysis/reactive/next-tick.html#vue-%E7%9A%84%E5%AE%9E%E7%8E%B0" target="_blank" rel="noopener">vue中的next的实现</a></p>
+<p><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">阮一峰es6入门promise</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">阮一峰再谈Event Loop</a></p>
+<p>当然还有mdn，基本参考了以上这些博客。做一个梳理和总结，最终实现一个微任务版本的promise</p>
+<h2 id="概念梳理"><a href="#概念梳理" class="headerlink" title="概念梳理"></a>概念梳理</h2><p><img src="E:/图片管理/bg2014100802.png" alt="Event Loop"></p>
 
       
 
@@ -248,7 +201,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
@@ -304,7 +257,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/25/今天开始学less/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/09/实现微任务版本的promise/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -318,18 +271,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/02/08/从js进化到es/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          从js进化到es
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/22/写博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">写博客</div>
+    <a href="/2019/04/09/this指向函数本身/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">this指向函数本身</div>
       <i class="icon-circle-right"></i>
     </a>
   
