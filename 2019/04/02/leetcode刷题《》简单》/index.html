@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/2 | 李向的笔记</title>
+  <title>leetcode刷题《简单》 | 李向的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李向的笔记">
-<meta property="og:url" content="http://yoursite.com/archives/2018/02/index.html">
+  <meta name="description" content="leetcode刷题《简单》前言只写思路，代码存放在github里。点这里 先刷简单的，刷完简单的之后按标签刷中等难度。 easy难度大约有130道，暂时每天刷一道吧。 已完成 两数之和 思路：用暴力破解法时间复杂度为O(n^2),通过哈希结构来以空间复杂度换时间复杂度。 遍历nums的同时将满足条件的值保存并在遍历其他数组项时进行判断。时间复杂度为O(n)  整数反转 思路：将数字想象为一个队列">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode刷题《简单》">
+<meta property="og:url" content="http://yoursite.com/2019/04/02/leetcode刷题《》简单》/index.html">
 <meta property="og:site_name" content="李向的笔记">
+<meta property="og:description" content="leetcode刷题《简单》前言只写思路，代码存放在github里。点这里 先刷简单的，刷完简单的之后按标签刷中等难度。 easy难度大约有130道，暂时每天刷一道吧。 已完成 两数之和 思路：用暴力破解法时间复杂度为O(n^2),通过哈希结构来以空间复杂度换时间复杂度。 遍历nums的同时将满足条件的值保存并在遍历其他数组项时进行判断。时间复杂度为O(n)  整数反转 思路：将数字想象为一个队列">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-09T03:20:10.505Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李向的笔记">
+<meta name="twitter:title" content="leetcode刷题《简单》">
+<meta name="twitter:description" content="leetcode刷题《简单》前言只写思路，代码存放在github里。点这里 先刷简单的，刷完简单的之后按标签刷中等难度。 easy难度大约有130道，暂时每天刷一道吧。 已完成 两数之和 思路：用暴力破解法时间复杂度为O(n^2),通过哈希结构来以空间复杂度换时间复杂度。 遍历nums的同时将满足条件的值保存并在遍历其他数组项时进行判断。时间复杂度为O(n)  整数反转 思路：将数字想象为一个队列">
   
     <link rel="alternative" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
   
@@ -150,364 +155,169 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-leetcode刷题《》简单》" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode刷题《简单》
+    </h1>
+  
+
+        
+        <a href="/2019/04/02/leetcode刷题《》简单》/" class="archive-article-date">
+  	<time datetime="2019-04-02T03:13:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="leetcode刷题《简单》"><a href="#leetcode刷题《简单》" class="headerlink" title="leetcode刷题《简单》"></a>leetcode刷题《简单》</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>只写思路，代码存放在github里。<a href="https://github.com/lixiang19/leetcode" target="_blank" rel="noopener">点这里</a></p>
+<p>先刷简单的，刷完简单的之后按标签刷中等难度。</p>
+<p>easy难度大约有130道，暂时每天刷一道吧。</p>
+<h2 id="已完成"><a href="#已完成" class="headerlink" title="已完成"></a>已完成</h2><ol>
+<li><p>两数之和</p>
+<p>思路：用暴力破解法时间复杂度为O(n^2),通过哈希结构来以空间复杂度换时间复杂度。</p>
+<p>遍历nums的同时将满足条件的值保存并在遍历其他数组项时进行判断。时间复杂度为O(n)</p>
+</li>
+<li><p>整数反转</p>
+<p>思路：将数字想象为一个队列，从队列头取出并加入队列尾，取出方法为%除于，加入方法为原数字/10后取整相加。判断溢出方法为计算结果/10取整后与原算式中乘数比较是否相同。</p>
+</li>
+<li><p>回文数</p>
+<p>思路：同整数反转将数字队列头移至队列尾，如果是回文数则过程中肯定会出现与原数字相同的情况。</p>
+</li>
+<li><p>罗马数字转整数</p>
+<p>思路：建立哈希表，将字符串分割转为数组后再转换位数字，从左至右，若左比右小则左边变为负值。</p>
+<p>测试后通过是通过了，但是打败了2%的人。慢得可怜。</p>
+</li>
+<li><p>最长公共前缀</p>
+<p>  思路一：最简单的思路：以数组第一项为前缀判断初始标准，然后与第二个成员比较后得出两者公共前缀，继续以此比较第三个，依次进行。</p>
+<p>  思路二：以数组第一项为前缀判断初始标准，然后将标准的第一个字符串与其余项的第一个字符串对比，接着取第二个字符串与其余项第二个字符串对比。</p>
+<p>  思路三:利用字典树（前缀树）    </p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/22/原型与原型链/" class="archive-article-date">
-  	<time datetime="2018-02-22T07:49:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/22/原型与原型链/">原型链与继承</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/02/leetcode刷题《》简单》/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/12/JS中的异步编程/" class="archive-article-date">
-  	<time datetime="2018-02-12T12:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/25/算法图解学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法图解学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/12/JS中的异步编程/">JavaScript中的代码复用——this、对象、类（1）对象与this</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/11/ES6里的异步/" class="archive-article-date">
-  	<time datetime="2018-02-11T12:58:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/11/ES6里的异步/">ES6里的异步</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/08/原型链/" class="archive-article-date">
-  	<time datetime="2018-02-08T13:05:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/08/原型链/">原型链</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/08/作用域链/" class="archive-article-date">
-  	<time datetime="2018-02-08T13:04:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/08/作用域链/">作用域链</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/08/什么是函数/" class="archive-article-date">
-  	<time datetime="2018-02-08T13:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/08/什么是函数/">什么是函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/08/es6新语法/" class="archive-article-date">
-  	<time datetime="2018-02-08T13:03:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/08/es6新语法/">es6新语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/08/数据类型/" class="archive-article-date">
-  	<time datetime="2018-02-08T13:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/08/数据类型/">数据类型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/08/从js进化到es/" class="archive-article-date">
-  	<time datetime="2018-02-08T13:00:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/08/从js进化到es/">从js进化到es</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -530,8 +340,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
