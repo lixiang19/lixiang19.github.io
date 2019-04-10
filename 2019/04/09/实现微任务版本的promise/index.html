@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="李向的笔记">
 <meta property="og:description" content="实现微任务版本的promise前言谷歌一下手写promise能找到好多，但是都有一个问题就是用setTimeout实现，用来理解promise是足够了，但是测试起来就会发现表现和es6中promise不一致，因为es6中的promise是输入微任务的。所以决定写一篇博客记录一下做一个微任务版本的promise，用MutationObserver来实现浏览器版本的微任务 参考博客： 剖析Promis">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="e:/图片管理/bg2014100802.png">
-<meta property="og:updated_time" content="2019-04-09T10:43:27.258Z">
+<meta property="og:image" content="https://i.loli.net/2019/04/09/5cac93dfd4ad0.png">
+<meta property="og:updated_time" content="2019-04-09T12:59:22.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现微任务版本的promise">
 <meta name="twitter:description" content="实现微任务版本的promise前言谷歌一下手写promise能找到好多，但是都有一个问题就是用setTimeout实现，用来理解promise是足够了，但是测试起来就会发现表现和es6中promise不一致，因为es6中的promise是输入微任务的。所以决定写一篇博客记录一下做一个微任务版本的promise，用MutationObserver来实现浏览器版本的微任务 参考博客： 剖析Promis">
-<meta name="twitter:image" content="e:/图片管理/bg2014100802.png">
+<meta name="twitter:image" content="https://i.loli.net/2019/04/09/5cac93dfd4ad0.png">
   
     <link rel="alternative" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
   
@@ -186,8 +186,11 @@
 <p><a href="https://ustbhuangyi.github.io/vue-analysis/reactive/next-tick.html#vue-%E7%9A%84%E5%AE%9E%E7%8E%B0" target="_blank" rel="noopener">vue中的next的实现</a></p>
 <p><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">阮一峰es6入门promise</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">阮一峰再谈Event Loop</a></p>
-<p>当然还有mdn，基本参考了以上这些博客。做一个梳理和总结，最终实现一个微任务版本的promise</p>
-<h2 id="概念梳理"><a href="#概念梳理" class="headerlink" title="概念梳理"></a>概念梳理</h2><p><img src="E:/图片管理/bg2014100802.png" alt="Event Loop"></p>
+<p><a href="https://github.com/JoeHetfield/You-Dont-Know-JS" target="_blank" rel="noopener">你不知道的JS</a></p>
+<p>当然还有mdn，基本参考了以上这些书或博客。做一个梳理和总结，最终实现一个微任务版本的promise</p>
+<h2 id="概念梳理"><a href="#概念梳理" class="headerlink" title="概念梳理"></a>概念梳理</h2><h3 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event Loop"></a>Event Loop</h3><p><img src="https://i.loli.net/2019/04/09/5cac93dfd4ad0.png" alt="bg2014100802.png"></p>
+<p>主线程从”任务队列”中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）。任务队列是异步事件的回调函数。</p>
+<p>也就是说js的异步是依靠平台的比如浏览器来实现，当有异步事件时，会派其他浏览器进程处理异步事件，主线程继续进行，当主线程执行完成后开始读取任务队列，这时任务队列到底有没有其实是取决于异步事件是否完成，如果异步事件完成，比如ajax请求到了结果就会在任务队列中加入当时设置的回调函数，主线程读取到后就会去执行。</p>
 
       
 
