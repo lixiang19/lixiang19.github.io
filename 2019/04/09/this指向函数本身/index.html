@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>this指向函数本身 | 李向的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="this指向函数本身今天实现call的时候发现了一件以前没注意到的事情。this竟然能指向函数本身。  方法调用模式 当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。很简单不配代码。    函数调用模式 当一个函数并非一个对象的属性时而是作为单独变量出现，在这种模式下，this指向为Global对象，在浏览器中就是window对象。这里其实有个问">
+  <meta name="description" content="this指向函数本身今天实现call的时候发现了一件以前没注意到的事情。this竟然能指向函数本身。">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="this指向函数本身">
 <meta property="og:url" content="http://yoursite.com/2019/04/09/this指向函数本身/index.html">
 <meta property="og:site_name" content="李向的笔记">
-<meta property="og:description" content="this指向函数本身今天实现call的时候发现了一件以前没注意到的事情。this竟然能指向函数本身。  方法调用模式 当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。很简单不配代码。    函数调用模式 当一个函数并非一个对象的属性时而是作为单独变量出现，在这种模式下，this指向为Global对象，在浏览器中就是window对象。这里其实有个问">
+<meta property="og:description" content="this指向函数本身今天实现call的时候发现了一件以前没注意到的事情。this竟然能指向函数本身。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-09T06:24:32.281Z">
+<meta property="og:updated_time" content="2019-04-10T02:53:37.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="this指向函数本身">
-<meta name="twitter:description" content="this指向函数本身今天实现call的时候发现了一件以前没注意到的事情。this竟然能指向函数本身。  方法调用模式 当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。很简单不配代码。    函数调用模式 当一个函数并非一个对象的属性时而是作为单独变量出现，在这种模式下，this指向为Global对象，在浏览器中就是window对象。这里其实有个问">
+<meta name="twitter:description" content="this指向函数本身今天实现call的时候发现了一件以前没注意到的事情。this竟然能指向函数本身。">
   
     <link rel="alternative" href="/atom.xml" title="李向的笔记" type="application/atom+xml">
   
@@ -176,6 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="this指向函数本身"><a href="#this指向函数本身" class="headerlink" title="this指向函数本身"></a>this指向函数本身</h1><p>今天实现call的时候发现了一件以前没注意到的事情。this竟然能指向函数本身。</p>
+<a id="more"></a>
 <ol>
 <li><p>方法调用模式</p>
 <p>当一个函数被保存为对象的一个属性时，我们称它为一个方法。当一个方法被调用时，this被绑定到该对象。很简单不配代码。</p>
@@ -287,15 +288,6 @@
 
   
 <nav id="article-nav">
-  
-    <a href="/2019/04/09/实现微任务版本的promise/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          实现微任务版本的promise
-        
-      </div>
-    </a>
   
   
     <a href="/2019/04/02/leetcode刷题《》简单》/" id="article-nav-older" class="article-nav-link-wrap">
